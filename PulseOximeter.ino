@@ -1,7 +1,8 @@
   
 #define BLYNK_TEMPLATE_ID "TMPLwaMdT3xhy" /// IMPORTANT! definition of Template ID should always be the first line in your code
 #define BLYNK_DEVICE_NAME "SVAT" /// ESP8266 lolin
-#define BLYNK_FIRMWARE_VERSION        "0.1.0"
+#define BLYNK_AUTH_TOKEN "AYNPsq8JrwSuUhemA-LlNEskbPsf09ae"
+#define BLYNK_FIRMWARE_VERSION  "0.1.0"
 
 #include <Wire.h>
 #include "MAX30100_PulseOximeter.h"
@@ -13,13 +14,17 @@
 #include "Wire.h"
 #include "Adafruit_GFX.h"
 #include "OakOLED.h"
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
 
 #define REPORTING_PERIOD_MS 1000
 OakOLED oled;
 #define USE_NODE_MCU_BOARD
 
-char auth[] = "AYNPsq8JrwSuUhemA-LlNEskbPsf09ae";             // Authentication Token Sent by Blynk
-//char ssid[] ="";
+char auth[] = BLYNK_AUTH_TOKEN;             // Authentication Token Sent by Blynk
+char ssid[] ="Bebe Gwapa";
+char pass[] = "fjpangit";
  
 // Connections : SCL PIN - D1 , SDA PIN - D2 , INT PIN - D0
 PulseOximeter pox;
@@ -59,7 +64,7 @@ void setup()
     oled.display();
     
     pinMode(16, OUTPUT);
-  //  Blynk.begin(auth, ssid, pass);
+    Blynk.begin(auth, ssid, pass);
  
     Serial.print("Initializing Pulse Oximeter..");
  
