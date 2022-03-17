@@ -111,9 +111,11 @@ void loop()
         Serial.print(" SpO2:");
         Serial.print(SpO2);
         Serial.println(" %");
+        int heartBeat =int(BPM) ;
+        int suffocationLevel =int(SpO2);
  
-      Blynk.virtualWrite(V0, BPM);
-      Blynk.virtualWrite(V1, SpO2);
+        Blynk.virtualWrite(V0, heartBeat);
+        Blynk.virtualWrite(V1, suffocationLevel);
         
         oled.clearDisplay();
         oled.setTextSize(1);
